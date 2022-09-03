@@ -6,13 +6,17 @@ import path from "path";
 import url from "url";
 
 import userRouter from "./server/routes/router.js";
-
+import connectDB from "./server/database/connection.js";
 const app = express();
 dotenv.config({ path: "config.env" });
 const PORT = process.env.PORT || 8080;
 
 //log request
 app.use(morgan("tiny"));
+
+//MongoDB
+
+connectDB();
 
 // parse requests to body parser
 app.use(bodyParser.urlencoded({ extended: true }));
