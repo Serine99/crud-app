@@ -1,5 +1,15 @@
+import axios from "axios";
+
 export async function homeRoutes(req, res) {
-	return res.render("index.ejs");
+	axios
+		.get("http://localhost:3000/api/users")
+		.then(function (response) {
+			// console.log(response.data);
+			return res.render("index", { users: response.data });
+		})
+		.catch((err) => {
+			res.send(err);
+		});
 }
 export async function add_user(req, res) {
 	return res.render("add_user.ejs");
