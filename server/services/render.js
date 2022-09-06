@@ -15,5 +15,12 @@ export async function add_user(req, res) {
 	return res.render("add_user.ejs");
 }
 export async function update_user(req, res) {
-	return res.render("update_user.ejs");
+	axios
+		.get("http://localhost:3000/api/users", { params: { id: req.query.id } })
+		.then(function (userdata) {
+			return res.render("update_user", { user: userdata.data });
+		})
+		.catch((err) => {
+			res.send(err);
+		});
 }
