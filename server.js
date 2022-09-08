@@ -33,7 +33,7 @@ app.use("/img", express.static(path.resolve(__dirname, "assets/img")));
 app.use("/js", express.static(path.resolve(__dirname, "assets/js")));
 
 //load routes
-app.use("/", userRouter);
+app.use("https://crud-app-serine.herokuapp.com/", userRouter);
 app.listen(PORT, () => {
 	console.log(`Server is running on http://localhost:${PORT} `);
 });
